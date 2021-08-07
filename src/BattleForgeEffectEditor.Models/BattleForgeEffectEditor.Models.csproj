@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39C67F8E-EAD4-474B-BF30-C367853F891B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BattleForgeEffectEditor.Models</RootNamespace>
+    <AssemblyName>BattleForgeEffectEditor.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\SpecialEffectExportService.cs" />
+    <Compile Include="Elements\AnimatedMesh.cs" />
+    <Compile Include="Elements\AnimatedMeshMaterial.cs" />
+    <Compile Include="Elements\Billboard.cs" />
+    <Compile Include="Elements\CameraShake.cs" />
+    <Compile Include="Elements\Decal.cs" />
+    <Compile Include="Elements\Effect.cs" />
+    <Compile Include="Elements\Emitter.cs" />
+    <Compile Include="Elements\Force.cs" />
+    <Compile Include="Elements\ForcePoint.cs" />
+    <Compile Include="Elements\Mesh.cs" />
+    <Compile Include="Elements\MeshMaterial.cs" />
+    <Compile Include="Elements\Physic.cs" />
+    <Compile Include="Elements\PhysicGroup.cs" />
+    <Compile Include="Elements\SfpEmitter.cs" />
+    <Compile Include="Elements\SfpForceField.cs" />
+    <Compile Include="Elements\SfpSystem.cs" />
+    <Compile Include="Elements\Sound.cs" />
+    <Compile Include="Elements\StaticDecal.cs" />
+    <Compile Include="Elements\Trail.cs" />
+    <Compile Include="Elements\WaterDecal.cs" />
+    <Compile Include="Enums\TrackTypeEnums.cs" />
+    <Compile Include="NodeLink.cs" />
+    <Compile Include="DataAccess\SpecialEffectImportService.cs" />
+    <Compile Include="Enums\StaticTrackType.cs" />
+    <Compile Include="Enums\TrackType.cs" />
+    <Compile Include="Enums\TrackEvaluationType.cs" />
+    <Compile Include="Enums\TrackDim.cs" />
+    <Compile Include="Enums\TrackInterpolationType.cs" />
+    <Compile Include="Enums\TrackMode.cs" />
+    <Compile Include="SpecialEffect.cs" />
+    <Compile Include="Elements\Element.cs" />
+    <Compile Include="Elements\Light.cs" />
+    <Compile Include="StaticTrack.cs" />
+    <Compile Include="Track.cs" />
+    <Compile Include="TrackKeyFrame.cs" />
+    <Compile Include="Utility\BinaryWriterExtension.cs" />
+    <Compile Include="Utility\UnexpectedDataException.cs" />
+    <Compile Include="Utility\Vector3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\BfString.cs" />
+    <Compile Include="Utility\BinaryReaderExtension.cs" />
+    <Compile Include="Utility\TypeExtension.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

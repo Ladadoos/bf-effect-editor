@@ -1,89 +1,99 @@
-# BattleForge Special Effect Editor
+![Skylords Reborn Logo](./images/skylords_reborn_logo.png)
 
-A tool that allows to easily edit the special effects (`.fxb` files) of BattleForge.
+# BattleForge Special Effect Editor
+A tool that allows to easily edit the special effect files (`.fxb` extension) of BattleForge. These special effect files are used extensively throughout BattleForge, sometimes more prominently than others. Spells are the easiest example, but units also use special effects in their models. Eruption and Area Ice Shield are examples of two spells. Lost Shade is an example of a unit with a blue flames special effect, similar to Shadow Phoenix but then in purple. All of these and the other 2400+ special effects in BattleForge are editable with this tool.
+
+<p float="left">
+<img src="./images/eruption.gif" width="300" height="300"/>
+<img src="./images/shield.gif" width="300" height="300"/>
+<img src="./images/lost_shade.gif" width="300" height="300"/>
+<img src="./images/shadow_phoenix.gif" width="300" height="300"/>
+</p>
+
+## Editor screenshot
+![Example screenshot](./images/showcase.png)
+
+
+## Why open source
+The reason to open source this editor is because reverse engineering the `.fxb` file type and creating an editor that can display its data is only half the battle to adding new special effect files to Skylords Reborn.  
+
+Although the editor in its current state can modify pretty much every aspect of a special effect file, one must also understand the interaction between different properties to be able to apply meaningful changes to the special effects.  
+
+By open sourcing this editor Skylords Reborn hopes to encourage other developers and players alike to learn and document the inner workings of special effect files and to improve the editor where necessary.  
+
+The ultimate goal is to be able to easily and meaningfully change or combine existing special effects and to create new ones from scratch.
 
 ## Getting started
+The following steps will allow you to use the special effect editor:
+- Download either the source code or the pre-built application. It requires [.NET Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472) to run.
+    - Pre-built application: Download the latest release under `Releases` at the top. 
+    - Source code: Clone this repository and build the project.
+- Download all special effect files and their textures from [the following link](https://drive.google.com/file/d/1pgpBFbs62QpDG1RR3-XqSsHShQLLlSSj/view?usp=sharing). These are the files you will be able to edit. Extract the content of this `.zip` file into a folder.
+- Start the editor and make sure to set the `Resources` folder setting in the startup view to the folder where you stored the files in the previous step. Doing this will allow the editor to also automatically load the images used in special effects in the editor.
+- Optionally choose a backup directory in the same settings view. That way a backup is created of every special effect opened.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+You should now be able to open and save special effect files.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+The map editor is used to visualize changes to special effects. Start the map editor with the `Map Editor` button at the top and select the location of the map editor. This is a file called `pluginbasededitor.exe` in the folder you installed Skylords Reborn.
 
-## Add your files
+> **_NOTE:_**  It is important you start the map editor using the `Map Editor` button, instead of manually starting the map editor yourself! Also always make sure you have the latest client files for Skylords Reborn (by running the updater) before editing any special effects with this editor.
 
-- [ ] [Create](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Any special effect files that you are working on and want to visualize in the map editor should be placed in a folder named `<skylords_reborn>/bf1/gfx/effects/`, where `<skylords_reborn>` is the folder where you have Skylords Reborn installed. Make sure to give it a unique and recognizable name, different from any of the existing special effect files used in the game already, like `pepe.fxb`.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/skylords-reborn/battleforge-special-effect-editor.git
-git branch -M main
-git push -uf origin main
-```
+After having placed a special effect in the aforementioned folder and having started the map editor, create an empty map by clicking on the red highlighted button in the following image and then on `OK`.
 
-## Integrate with your tools
+![Create Map In Editor](./images/create_map_in_editor.png)
 
-- [ ] [Set up project integrations](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/user/project/integrations/)
+Proceed to opening the `Entity Placement` window as shown in the following image.
 
-## Collaborate with your team
+![Map Editor Open Entity Placement](./images/map_editor_open_entity_placement.png)
 
-- [ ] [Invite team members and collaborators](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Automatically merge when pipeline succeeds](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+And lastly select the `Effect` tab in the opened window and search for your special effect. In my case, it is `pepe`. You can then spawn the special effect by clicking on it and clicking anywhere on the map.
 
-## Test and Deploy
+![Map Editor Spawn Effect](./images/select_effect_in_map_editor.png)
 
-Use the built-in continuous integration in GitLab.
+Now, while the special effect editor has `pepe.fxb` open, you can change the special effect and save the file. Clicking the `Save` button will automatically bring up the opened map editor. You can now re-spawn the special effect and immediately see your changes. 
 
-- [ ] [Get started with GitLab CI/CD](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://docs.gitlab.com/ee/user/application_security/sast/)
+> **_NOTE:_**  Any new files added to the `<skylords_reborn>/bf1/gfx/effects/` folder while the map editor is open will not be shown in the map editor in the `Effect` tab of the `Entity Placement` window. You will be required to close the map editor and re-open it using the `Map Editor` button in the editor.
 
-***
+As an extra, you can also download [SageThumbs](https://sourceforge.net/projects/sagethumbs/). This is an application that allows to easily convert images from `.dds` to `.png` and to directly view `.dds` images in the windows file explorer. 
 
-# Editing this README
+## How to contribute
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://gitlab.com/-/experiment/new_project_readme_content:ff77448872c905fecbd919484e41ec86?https://www.makeareadme.com/) for this template.
+### Users
+Even without programming experience you can help improve the editor by using it and suggesting improvements, adding documentation about the special effects or reporting bugs. You can do so by writing [issues here](https://gitlab.com/skylords-reborn/battleforge-special-effect-editor/-/issues/new). Please give the issue a short but descriptive title and make sure to choose a suitable issue template if possible. You can choose an issue template in the window where you create a new issue.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Developers
+To contribute to the source code, start by creating a fork of the repository and proceed then to cloning the forked repository locally. Create a short and descriptive branch in your fork, commit and push your changes to that branch and finally create a Merge Request to `develop` from this repository. For more information please read [forking workflow](https://docs.gitlab.com/ee/user/project/repository/forking_workflow.html) and [creating merge requests](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html).
 
-## Name
-Choose a self-explaining name for your project.
+Some extra notes:
+- Provide clear and concise titles to your merge requests. A merge request is not obliged to have an issue for now. Choose an appropriate template when creating your merge requests. Description templates can be found in the UI when creating a merge request.
+- Have a look around the source code to get a general sense of coding style. We will not be strict on coding styles and prefer to take a pragmatic approach with this editor.
+- Adhere to the [MVVM pattern](https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/patterns-wpf-apps-with-the-model-view-viewmodel-design-pattern) as much as possible.
+- Depending on the number of contributions to this project, this process may be refined in the future.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+For any questions, please contact [@Ladadoos](https://forum.skylords.eu/index.php?/profile/2557-ladadoos/).
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## Improvements and new features
+The following is a list of improvements or new features that could be worked on. This is by no means an exhaustive list.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+- Display data differently in the editor after having figured out how changing them affects the special effect. Two possible candidates for this are the dynamic tracks and controlpoints (in bezier mode).
+- Document the different properties of a special effect, like the different element types, dynamic tracks and static tracks, and how they interact with each other. This way it is easier to make meaningful changes to special effects (by other people).
+    - One idea to show this in the editor could be with tooltips that include GIFs to clearly depict the effect of a change before and after.
+- Restrict combinations of elements and/or tracks that create an invalid special effect.  
+- Export file to and import from `.xml`. BattleForge can read special effects in the form of `.xml` files too. Having the special effect files in text format also allows to easily version control the special effects.
+- Support undo and redo for all editable special effect properties.
+- Add dark-mode. 
+- In the general element settings page the texture is rendered, if there's any. This texture is sometimes difficulty to see if it's white because the background is also white. 
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+## Known issues
+- There are 4 tornado special effect files that this editor cannot parse. That is because their datastructure is slightly different and it did not seem worth the time considering the editor can parse all other special effect files (around 2450 of them).
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Contributions
+- Created originally by [@Ladadoos](https://forum.skylords.eu/index.php?/profile/2557-ladadoos/)
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
 
 ## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
-
+This project is open source and available under GNU General Public License v3.0. See [LICENSE](./LICENSE) for more information. 

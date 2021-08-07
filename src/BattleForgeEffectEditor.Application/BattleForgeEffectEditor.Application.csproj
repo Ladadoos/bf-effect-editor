@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8BA0EC87-4AAA-451C-99F7-D7A86488CB70}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BattleForgeEffectEditor.Application</RootNamespace>
+    <AssemblyName>BattleForgeEffectEditor.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AvalonDock, Version=4.51.1.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4">
+      <HintPath>..\packages\Dirkster.AvalonDock.4.51.1\lib\net40\AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GongSolutions.WPF.DragDrop, Version=2.0.0.0, Culture=neutral, PublicKeyToken=91f1945125b7a587, processorArchitecture=MSIL">
+      <HintPath>..\packages\gong-wpf-dragdrop.2.3.2\lib\net47\GongSolutions.WPF.DragDrop.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonSettings.Library, Version=1.0.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JsonSettings.Library.1.0.20\lib\netstandard2.0\JsonSettings.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.5.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Settings\EditorSettings.cs" />
+    <Compile Include="Settings\EditorStateSettings.cs" />
+    <Compile Include="Settings\SettingsService.cs" />
+    <Compile Include="Utility\BfTextureConverter.cs" />
+    <Compile Include="Utility\DialogService.cs" />
+    <Compile Include="Utility\ObjectExtensions.cs" />
+    <Compile Include="Utility\TypeUtilities.cs" />
+    <Compile Include="Utility\WindowsService.cs" />
+    <Compile Include="ViewModel\DockManagerViewModel.cs" />
+    <Compile Include="ViewModel\DockWindowViewModel.cs" />
+    <Compile Include="ViewModel\DynamicTrackEditorViewModel.cs" />
+    <Compile Include="ViewModel\ElementEditorViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\AnimatedMeshSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\BillBoardSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\DecalSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\EffectSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\ElementSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\EmitterSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\EmptySettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\LightSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\MeshSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\PhysicSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\SfpSystemSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\SoundSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\SpecialEffectSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\StaticDecalSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\TrailSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ElementSettings\WaterDecalSettingsViewModel.cs" />
+    <Compile Include="ViewModel\GenericControls\DirectoryChooserViewModel.cs" />
+    <Compile Include="ViewModel\GenericControls\VisibilityButtonViewModel.cs" />
+    <Compile Include="ViewModel\Keyframe\ColorKeyframeViewModel.cs" />
+    <Compile Include="ViewModel\Keyframe\EnumKeyframeViewModel.cs" />
+    <Compile Include="ViewModel\Keyframe\FloatKeyframeViewModel.cs" />
+    <Compile Include="ViewModel\Keyframe\Vector3KeyframeViewModel.cs" />
+    <Compile Include="ViewModel\NodeLinkViewModel.cs" />
+    <Compile Include="ViewModel\ElementTreeItemViewModel.cs" />
+    <Compile Include="ViewModel\ElementTreeViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\ObservableObject.cs" />
+    <Compile Include="ViewModel\SpecialEffectEditorViewModel.cs" />
+    <Compile Include="ViewModel\SpecialEffectTopBarViewModel.cs" />
+    <Compile Include="ViewModel\StartupViewModel.cs" />
+    <Compile Include="ViewModel\StaticTrackListViewModel.cs" />
+    <Compile Include="ViewModel\StaticTrack\BooleanStaticTrackViewModel.cs" />
+    <Compile Include="ViewModel\StaticTrack\EnumStaticTrackViewModel.cs" />
+    <Compile Include="ViewModel\StaticTrack\FloatStaticTrackViewModel.cs" />
+    <Compile Include="ViewModel\StaticTrack\StaticTrackViewModel.cs" />
+    <Compile Include="ViewModel\StaticTrack\StringStaticTrackViewModel.cs" />
+    <Compile Include="ViewModel\StaticTrack\Vector3StaticTrackViewModel.cs" />
+    <Compile Include="ViewModel\TrackListItemViewModel.cs" />
+    <Compile Include="ViewModel\TrackListViewModel.cs" />
+    <Compile Include="ViewModel\Keyframe\KeyframeViewModel.cs" />
+    <Compile Include="ViewModel\GenericControls\MultiStageButtonViewModel.cs" />
+    <Compile Include="View\DynamicTrackEditorView.xaml.cs">
+      <DependentUpon>DynamicTrackEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementEditorView.xaml.cs">
+      <DependentUpon>ElementEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\AnimatedMeshSettingsView.xaml.cs">
+      <DependentUpon>AnimatedMeshSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\BillBoardSettingsView.xaml.cs">
+      <DependentUpon>BillBoardSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\DecalSettingsView.xaml.cs">
+      <DependentUpon>DecalSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\EffectSettingsView.xaml.cs">
+      <DependentUpon>EffectSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\EmitterSettingsView.xaml.cs">
+      <DependentUpon>EmitterSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\EmptySettingsView.xaml.cs">
+      <DependentUpon>EmptySettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\LightSettingsView.xaml.cs">
+      <DependentUpon>LightSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\MeshSettingsView.xaml.cs">
+      <DependentUpon>MeshSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\PhysicSettingsView.xaml.cs">
+      <DependentUpon>PhysicSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\SfpSystemSettingsView.xaml.cs">
+      <DependentUpon>SfpSystemSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\SoundSettingsView.xaml.cs">
+      <DependentUpon>SoundSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\SpecialEffectsSettingsView.xaml.cs">
+      <DependentUpon>SpecialEffectsSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\StaticDecalSettingsView.xaml.cs">
+      <DependentUpon>StaticDecalSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\TrailSettingsView.xaml.cs">
+      <DependentUpon>TrailSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementSettings\WaterDecalSettingsView.xaml.cs">
+      <DependentUpon>WaterDecalSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementTreeView.xaml.cs">
+      <DependentUpon>ElementTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GenericControls\DirectoryChooserView.xaml.cs">
+      <DependentUpon>DirectoryChooserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GenericControls\VisibilityButtonView.xaml.cs">
+      <DependentUpon>VisibilityButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Keyframe\ColorKeyframeView.xaml.cs">
+      <DependentUpon>ColorKeyframeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Keyframe\EnumKeyframeView.xaml.cs">
+      <DependentUpon>EnumKeyframeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Keyframe\FloatKeyframeView.xaml.cs">
+      <DependentUpon>FloatKeyframeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Keyframe\Vector3KeyframeView.xaml.cs">
+      <DependentUpon>Vector3KeyframeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NodeLinkView.xaml.cs">
+      <DependentUpon>NodeLinkView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SpecialEffectEditorTopBarView.xaml.cs">
+      <DependentUpon>SpecialEffectEditorTopBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SpecialEffectEditorView.xaml.cs">
+      <DependentUpon>SpecialEffectEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StartupView.xaml.cs">
+      <DependentUpon>StartupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaticTrackListView.xaml.cs">
+      <DependentUpon>StaticTrackListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaticTrack\EnumStaticTrackView.xaml.cs">
+      <DependentUpon>EnumStaticTrackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaticTrack\FloatStaticTrackView.xaml.cs">
+      <DependentUpon>FloatStaticTrackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaticTrack\StringStaticTrackView.xaml.cs">
+      <DependentUpon>StringStaticTrackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaticTrack\Vector3StaticTrackView.xaml.cs">
+      <DependentUpon>Vector3StaticTrackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrackListView.xaml.cs">
+      <DependentUpon>TrackListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GenericControls\MultiStageButtonView.xaml.cs">
+      <DependentUpon>MultiStageButtonView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\DynamicTrackEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\AnimatedMeshSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\BillBoardSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\DecalSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\EffectSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\EmitterSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\EmptySettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\LightSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\MeshSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\PhysicSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\SfpSystemSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\SoundSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\SpecialEffectsSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\StaticDecalSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\TrailSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementSettings\WaterDecalSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GenericControls\DirectoryChooserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GenericControls\VisibilityButtonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Keyframe\ColorKeyframeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Keyframe\EnumKeyframeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Keyframe\FloatKeyframeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Keyframe\Vector3KeyframeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\NodeLinkView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SpecialEffectEditorTopBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SpecialEffectEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StartupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StaticTrackListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StaticTrack\EnumStaticTrackView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StaticTrack\FloatStaticTrackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StaticTrack\StringStaticTrackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StaticTrack\Vector3StaticTrackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrackListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GenericControls\MultiStageButtonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\Editor\Corrupted.png" />
+    <Resource Include="Resources\Editor\HideIcon.png" />
+    <Resource Include="Resources\Editor\NoImage.png" />
+    <Resource Include="Resources\Editor\SkylordsRebornLogo.png" />
+    <Resource Include="Resources\Editor\VisibleIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BattleForgeEffectEditor.Models\BattleForgeEffectEditor.Models.csproj">
+      <Project>{39C67F8E-EAD4-474B-BF30-C367853F891B}</Project>
+      <Name>BattleForgeEffectEditor.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="favicon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,57 @@
+﻿<!-- BattleForge Special Effect Editor -->
+<!-- Copyright(C) 2021 Skylords Reborn -->
+<!-- Project licensed under GNU General Public License v3.0. See LICENSE for more information. -->
+
+<UserControl x:Class="BattleForgeEffectEditor.Application.View.StaticTrackListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:BattleForgeEffectEditor.Application.ViewModel"
+             xmlns:svm="clr-namespace:BattleForgeEffectEditor.Application.ViewModel.StaticTrack"
+             xmlns:sv="clr-namespace:BattleForgeEffectEditor.Application.View.StaticTrack"
+             d:DataContext="{d:DesignInstance Type=vm:StaticTrackListViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type svm:FloatStaticTrackViewModel}">
+            <sv:FloatStaticTrackView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type svm:StringStaticTrackViewModel}">
+            <sv:StringStaticTrackView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type svm:BooleanStaticTrackViewModel}">
+            <sv:EnumStaticTrackView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type svm:PriorityStaticTrackViewModel}">
+            <sv:EnumStaticTrackView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type svm:SoundLoopStaticTrackViewModel}">
+            <sv:EnumStaticTrackView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type svm:EffectTypeStaticTrackViewModel}">
+            <sv:EnumStaticTrackView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type svm:Vector3StaticTrackViewModel}">
+            <sv:Vector3StaticTrackView />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Static tracks" FontSize="16" FontWeight="Bold"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Content="Add" Width="60" Margin="0, 0, 10, 0" Command="{Binding AddStaticTrackCommand}" IsEnabled="{Binding AddStaticTrackButtonEnabled}"/>
+            <ComboBox Width="100"
+                      ItemsSource="{Binding StaticTracksEnums}"
+                      SelectedItem="{Binding SelectedStaticTrackType}" />
+        </StackPanel>
+        <ScrollViewer Grid.Row="2" Margin="0, 5, 0, 0">
+            <ItemsControl ItemsSource="{Binding StaticTracks}" />
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,59 @@
+﻿<!-- BattleForge Special Effect Editor -->
+<!-- Copyright(C) 2021 Skylords Reborn -->
+<!-- Project licensed under GNU General Public License v3.0. See LICENSE for more information. -->
+
+<UserControl x:Class="BattleForgeEffectEditor.Application.View.TrackListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:BattleForgeEffectEditor.Application.ViewModel"
+             xmlns:vgc="clr-namespace:BattleForgeEffectEditor.Application.View.GenericControls"
+             d:DataContext="{d:DesignInstance Type=vm:TrackListViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="35" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Dynamic tracks" FontSize="16" FontWeight="Bold"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Content="Add" Width="60" Margin="0, 0, 10, 0" Command="{Binding AddTrackCommand}" IsEnabled="{Binding AddTrackButtonEnabled}"/>
+            <ComboBox Width="150"
+                      ItemsSource="{Binding TracksEnums}"
+                      SelectedItem="{Binding SelectedTrackType}" />
+        </StackPanel>
+        <TextBox Grid.Row="2" Margin="0, 5, 0, 0" Text="{Binding SearchFieldText, UpdateSourceTrigger=PropertyChanged}" />
+        <ListView Grid.Row="3" Margin="0, 5, 0, 0"
+                  ItemsSource="{Binding Tracks}" SelectedItem="{Binding SelectedItem}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type vm:TrackListItemViewModel}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <vgc:VisibilityButtonView Grid.Column="0" 
+                                                  DataContext="{Binding HideTracksButton}" 
+                                                  HorizontalAlignment="Right" Width="20" Height="20"
+                                                  Margin="0, 0, 5, 0"/>
+                        <vgc:MultiStageButtonView Grid.Column="1" 
+                                                  DataContext="{Binding DeleteButton}" 
+                                                  Width="20" Height="20" />
+                        <Label Grid.Column="2" Content="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

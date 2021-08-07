@@ -1,0 +1,112 @@
+﻿<!-- BattleForge Special Effect Editor -->
+<!-- Copyright(C) 2021 Skylords Reborn -->
+<!-- Project licensed under GNU General Public License v3.0. See LICENSE for more information. -->
+
+<UserControl x:Class="BattleForgeEffectEditor.Application.View.DynamicTrackEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:BattleForgeEffectEditor.Application.ViewModel"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:vmkf="clr-namespace:BattleForgeEffectEditor.Application.ViewModel.Keyframe"
+             xmlns:vkf="clr-namespace:BattleForgeEffectEditor.Application.View.Keyframe"
+             d:DataContext="{d:DesignInstance Type=vm:DynamicTrackEditorViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="53" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Dynamic Track Editor" FontSize="14" FontWeight="Bold"/>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type StackPanel}">
+                    <Setter Property="Margin" Value="0,0,10,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel Width="125">
+                <Label Content="Track Type" Foreground="Black" FontWeight="Bold"/>
+                <Label Content="{Binding Type}" />
+            </StackPanel>
+            <StackPanel Width="75">
+                <Label Content="Length" Foreground="Black" FontWeight="Bold"/>
+                <xctk:DecimalUpDown Value="{Binding Length}" Width="75" />
+            </StackPanel>
+            <StackPanel Width="100">
+                <Label Content="Dimension" Foreground="Black" FontWeight="Bold"/>
+                <ComboBox ItemsSource="{Binding Dims}" SelectedItem="{Binding SelectedDim}" />
+            </StackPanel>
+            <StackPanel Width="75">
+                <Label Content="Mode" Foreground="Black" FontWeight="Bold"/>
+                <ComboBox ItemsSource="{Binding Modes}" SelectedItem="{Binding SelectedMode}" />
+            </StackPanel>
+            <StackPanel Width="100">
+                <Label Content="Interpolation" Foreground="Black" FontWeight="Bold"/>
+                <ComboBox ItemsSource="{Binding Interpolations}" SelectedItem="{Binding SelectedInterpolation}" />
+            </StackPanel>
+            <StackPanel Width="100">
+                <Label Content="Evaluation" Foreground="Black" FontWeight="Bold"/>
+                <ComboBox ItemsSource="{Binding Evaluations}" SelectedItem="{Binding SelectedEvaluation, Delay=10}" />
+            </StackPanel>
+        </StackPanel>
+
+        <Border Grid.Row="2" CornerRadius="6" BorderBrush="Gray"
+                    Background="WhiteSmoke" BorderThickness="2" />
+
+        <Grid Grid.Row="3" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 5">
+                <TextBlock Text="Entry keyframes" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Button Content="Add" Command="{Binding AddEntryKeyframeCommand}"  Margin="10, 0, 0, 0" Width="40"/>
+                <Button Content="Sort by index" Command="{Binding SortEntryKeyframeCommand}"  Margin="10, 0, 0, 0" Width="100"/>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1">
+                <ItemsControl ItemsSource="{Binding EntryFrames}">
+                    <ItemsControl.Resources>
+                        <DataTemplate DataType="{x:Type vmkf:Vector3KeyframeViewModel}">
+                            <vkf:Vector3KeyframeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmkf:FloatKeyframeViewModel}">
+                            <vkf:FloatKeyframeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmkf:EnumKeyframeViewModel}">
+                            <vkf:EnumKeyframeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmkf:ColorKeyframeViewModel}">
+                            <vkf:ColorKeyframeView />
+                        </DataTemplate>
+                    </ItemsControl.Resources>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0, 5, 0, 5">
+                <TextBlock Text="Control point keyframes" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" />
+                <Button Content="Add" Command="{Binding AddControlPointCommand}"  Margin="10, 0, 0, 0" Width="40"/>
+                <Button Content="Sort by index" Command="{Binding SortControlPointCommand}"  Margin="10, 0, 0, 0" Width="100"/>
+            </StackPanel>
+            <ScrollViewer Grid.Row="3">
+                <ItemsControl ItemsSource="{Binding ControlFrames}">
+                    <ItemsControl.Resources>
+                        <DataTemplate DataType="{x:Type vmkf:Vector3KeyframeViewModel}">
+                            <vkf:Vector3KeyframeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmkf:FloatKeyframeViewModel}">
+                            <vkf:FloatKeyframeView />
+                        </DataTemplate>
+                    </ItemsControl.Resources>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,17 @@
+﻿<!-- BattleForge Special Effect Editor -->
+<!-- Copyright(C) 2021 Skylords Reborn -->
+<!-- Project licensed under GNU General Public License v3.0. See LICENSE for more information. -->
+
+<Application x:Class="BattleForgeEffectEditor.Application.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BattleForgeEffectEditor.Application"
+             xmlns:utility="clr-namespace:BattleForgeEffectEditor.Application.Utility"
+             StartupUri="View/MainWindowView.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <utility:BfTextureConverter x:Key="BfTextureConverter" />
+            <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

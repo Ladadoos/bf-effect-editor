@@ -1,0 +1,37 @@
+﻿<!-- BattleForge Special Effect Editor -->
+<!-- Copyright(C) 2021 Skylords Reborn -->
+<!-- Project licensed under GNU General Public License v3.0. See LICENSE for more information. -->
+
+<UserControl x:Class="BattleForgeEffectEditor.Application.View.StaticTrack.Vector3StaticTrackView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:BattleForgeEffectEditor.Application.ViewModel.StaticTrack"
+             xmlns:vu="clr-namespace:BattleForgeEffectEditor.Application.View.GenericControls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             d:DataContext="{d:DesignInstance Type=vm:Vector3StaticTrackViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="75" d:DesignWidth="200">
+
+    <StackPanel Margin="0, 5, 0, 5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
+            <vu:MultiStageButtonView Grid.Column="2" Width="40" Height="20"
+                                     DataContext="{Binding DeleteButton}"/>
+        </Grid>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="X" Foreground="Black" FontWeight="Bold"/>
+            <xctk:DecimalUpDown Value="{Binding X}" />
+            <Label Content="Y" Foreground="Black" FontWeight="Bold"/>
+            <xctk:DecimalUpDown Value="{Binding Y}" />
+            <Label Content="Z" Foreground="Black" FontWeight="Bold"/>
+            <xctk:DecimalUpDown Value="{Binding Z}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

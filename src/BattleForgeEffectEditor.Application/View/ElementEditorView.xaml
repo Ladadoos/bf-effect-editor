@@ -1,0 +1,117 @@
+﻿<!-- BattleForge Special Effect Editor -->
+<!-- Copyright(C) 2021 Skylords Reborn -->
+<!-- Project licensed under GNU General Public License v3.0. See LICENSE for more information. -->
+
+<UserControl x:Class="BattleForgeEffectEditor.Application.View.ElementEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vmes="clr-namespace:BattleForgeEffectEditor.Application.ViewModel.ElementSettings"
+             xmlns:vm="clr-namespace:BattleForgeEffectEditor.Application.ViewModel"
+             xmlns:v="clr-namespace:BattleForgeEffectEditor.Application.View"
+             xmlns:ves="clr-namespace:BattleForgeEffectEditor.Application.View.ElementSettings"
+             d:DataContext="{d:DesignInstance Type=vm:ElementEditorViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="224*"/>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="150*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.ColumnSpan="2" CornerRadius="6" BorderBrush="Gray"
+                    Background="WhiteSmoke" BorderThickness="2" Margin="5">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Content="General element settings" FontSize="16" FontWeight="Bold"/>
+                <ContentControl Grid.Row="1" Content="{Binding ElementSettings}" Background="Gray">
+                    <ContentControl.Resources>
+                        <DataTemplate DataType="{x:Type vmes:AnimatedMeshSettingsViewModel}">
+                            <ves:AnimatedMeshSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:EmptySettingsViewModel}">
+                            <ves:EmptySettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:BillBoardSettingsViewModel}">
+                            <ves:BillBoardSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:DecalSettingsViewModel}">
+                            <ves:DecalSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:EffectSettingsViewModel}">
+                            <ves:EffectSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:EmitterSettingsViewModel}">
+                            <ves:EmitterSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:LightSettingsViewModel}">
+                            <ves:LightSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:MeshSettingsViewModel}">
+                            <ves:MeshSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:PhysicSettingsViewModel}">
+                            <ves:PhysicSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:SfpSystemSettingsViewModel}">
+                            <ves:SfpSystemSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:SoundSettingsViewModel}">
+                            <ves:SoundSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:SpecialEffectSettingsViewModel}">
+                            <ves:SpecialEffectsSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:StaticDecalSettingsViewModel}">
+                            <ves:StaticDecalSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:TrailSettingsViewModel}">
+                            <ves:TrailSettingsView/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vmes:WaterDecalSettingsViewModel}">
+                            <ves:WaterDecalSettingsView/>
+                        </DataTemplate>
+                    </ContentControl.Resources>
+                </ContentControl>
+            </Grid>
+        </Border>
+
+        <Border Grid.RowSpan="1" Grid.Column="2" Margin="5" CornerRadius="6" BorderBrush="Gray"
+                    Background="WhiteSmoke" BorderThickness="2">
+            <v:StaticTrackListView Margin="5" DataContext="{Binding StaticTracksList}"/>
+        </Border>
+
+        <Border Grid.Column="3" Grid.RowSpan="2" Margin="5" CornerRadius="6" BorderBrush="Gray"
+                    Background="WhiteSmoke" BorderThickness="2">
+            <v:TrackListView Margin="5" DataContext="{Binding TracksList}" />
+        </Border>
+
+        <Border Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="3" Margin="5" CornerRadius="6" BorderBrush="Gray"
+                    Background="WhiteSmoke" BorderThickness="2">
+            <v:DynamicTrackEditorView Margin="5"
+                                  Visibility="{Binding Path=DataContext.ShowDynamicTrackEditor,
+                                                  RelativeSource={RelativeSource AncestorType={x:Type UserControl}},
+                                                  Converter={StaticResource BoolToVisibility}}"
+                                  DataContext="{Binding DynamicTrackEditor}"/>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="3" Grid.RowSpan="1" Margin="5" CornerRadius="6" BorderBrush="Gray"
+                    Background="WhiteSmoke" BorderThickness="2">
+            <v:NodeLinkView Margin="5"
+                            Visibility="{Binding Visible, Converter={StaticResource BoolToVisibility}}"
+                            DataContext="{Binding NodeLink}" />
+        </Border>
+    </Grid>
+</UserControl>

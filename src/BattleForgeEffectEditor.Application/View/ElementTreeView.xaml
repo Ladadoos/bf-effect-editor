@@ -1,0 +1,76 @@
+﻿<!-- BattleForge Special Effect Editor -->
+<!-- Copyright(C) 2021 Skylords Reborn -->
+<!-- Project licensed under GNU General Public License v3.0. See LICENSE for more information. -->
+
+<UserControl x:Class="BattleForgeEffectEditor.Application.View.ElementTreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:BattleForgeEffectEditor.Application.ViewModel"
+             xmlns:dragDrop="urn:gong-wpf-dragdrop"
+             d:DataContext="{d:DesignInstance Type=vm:ElementTreeViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Elements" FontSize="16" FontWeight="Bold" />
+        <TreeView Grid.Row="1" ItemsSource="{Binding Elements}"
+                  dragDrop:DragDrop.IsDragSource="True"
+                  dragDrop:DragDrop.IsDropTarget="True"
+                  dragDrop:DragDrop.DropHandler="{Binding}"
+                  KeyDown="TreeView_KeyDown">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}" />
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded}" />
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                            <Setter Property="FontWeight" Value="UltraBold" />
+                            <Setter Property="FontSize" Value="13" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsSelected}" Value="False">
+                            <Setter Property="FontWeight" Value="Normal" />
+                            <Setter Property="FontSize" Value="12" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Expand all" Command="{Binding ExpandAllCommand}" />
+                    <MenuItem Header="Collapse all" Command="{Binding CollapseAllCommand}" />
+                    <Separator />
+                    <MenuItem Header="Toggle visibility" InputGestureText="V" Command="{Binding ToggleElementVisibilityCommand}" IsEnabled="{Binding IsNonRootNodeSelected}"/>
+                    <MenuItem Header="Toggle all except this" Command="{Binding ToggleAllExceptSelectedElementCommand}" IsEnabled="{Binding IsNonRootNodeSelected}"/>
+                    <Separator />
+                    <MenuItem Header="Clone" InputGestureText="C" Command="{Binding CloneElementCommand}" IsEnabled="{Binding IsNonRootNodeSelected}"/>
+                    <MenuItem Header="Delete" InputGestureText="D" Command="{Binding DeleteElementCommand}" IsEnabled="{Binding IsNonRootNodeSelected}"/>
+                    <Separator />
+                    <MenuItem Header="Add element" ItemsSource="{Binding AddElementOptions}">
+                        <MenuItem.ItemContainerStyle>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Header" Value="{Binding Header}" />
+                                <Setter Property="Command" Value="{Binding Command }" />
+                            </Style>
+                        </MenuItem.ItemContainerStyle>
+                    </MenuItem>
+                </ContextMenu>
+            </TreeView.ContextMenu>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type vm:ElementTreeItemViewModel}" ItemsSource="{Binding Elements}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Resources/Editor/HideIcon.png" Width="18" Margin="0, 0, 5, 0"
+                               Visibility="{Binding HideIconVisibility, Converter={StaticResource BoolToVisibility}}"/>
+                        <TextBlock Text="{Binding ElementName}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</UserControl>
