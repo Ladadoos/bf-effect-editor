@@ -28,7 +28,7 @@ The following steps will allow you to use the special effect editor:
 - Download either the source code or the pre-built application. It requires [.NET Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472) to run.
     - Pre-built application: Download the latest release under `Releases` at the top. 
     - Source code: Clone this repository and build the project.
-- Download all special effect files and their textures from [the following link](https://drive.google.com/file/d/1pgpBFbs62QpDG1RR3-XqSsHShQLLlSSj/view?usp=sharing). These are the files you will be able to edit. Extract the content of this `.zip` file into a folder.
+- Download all special effect files and their textures from [the following link](https://drive.google.com/file/d/1pgpBFbs62QpDG1RR3-XqSsHShQLLlSSj/view?usp=sharing). These are the files you will be able to edit with this editor. Extract the content of this `.zip` file into a folder.
 - Start the editor and make sure to set the `Resources` folder setting in the startup view to the folder where you stored the files in the previous step. Doing this will allow the editor to also automatically load the images used in special effects in the editor.
 - Optionally choose a backup directory in the same settings view. That way a backup is created of every special effect opened.
 
@@ -50,6 +50,8 @@ Proceed to opening the `Entity Placement` window as shown in the following image
 
 And lastly select the `Effect` tab in the opened window and search for your special effect. In my case, it is `pepe`. You can then spawn the special effect by clicking on it and clicking anywhere on the map.
 
+> **_NOTE:_**  Always search for your special effect directly by entering the name of it in the search box. Do not try to find your special effect file by navigating the folders in the `Folder` panel: the map editor will not find it that way.
+
 ![Map Editor Spawn Effect](./images/select_effect_in_map_editor.png)
 
 Now, while the special effect editor has `pepe.fxb` open, you can change the special effect and save the file. Clicking the `Save` button will automatically bring up the opened map editor. You can now re-spawn the special effect and immediately see your changes. 
@@ -64,7 +66,7 @@ As an extra, you can also download [SageThumbs](https://sourceforge.net/projects
 Even without programming experience you can help improve the editor by using it and suggesting improvements, adding documentation about the special effects or reporting bugs. You can do so by writing [issues here](https://gitlab.com/skylords-reborn/battleforge-special-effect-editor/-/issues/new). Please give the issue a short but descriptive title and make sure to choose a suitable issue template if possible. You can choose an issue template in the window where you create a new issue.
 
 ### Developers
-To contribute to the source code, start by creating a fork of the repository and proceed then to cloning the forked repository locally. Create a short and descriptive branch in your fork, commit and push your changes to that branch and finally create a Merge Request to `develop` from this repository. For more information please read [forking workflow](https://docs.gitlab.com/ee/user/project/repository/forking_workflow.html) and [creating merge requests](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html).
+To contribute to the source code, start by creating a fork of the repository and proceed then to cloning the forked repository locally. Create a short and descriptive branch in your fork, commit and push your changes to that branch and finally create a Merge Request to `develop` from the repository. For more information please read [forking workflow](https://docs.gitlab.com/ee/user/project/repository/forking_workflow.html) and [creating merge requests](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html).
 
 Some extra notes:
 - Provide clear and concise titles to your merge requests. A merge request is not obliged to have an issue for now. Choose an appropriate template when creating your merge requests. Description templates can be found in the UI when creating a merge request.
@@ -84,7 +86,7 @@ The following is a list of improvements or new features that could be worked on.
 - Export file to and import from `.xml`. BattleForge can read special effects in the form of `.xml` files too. Having the special effect files in text format also allows to easily version control the special effects.
 - Support undo and redo for all editable special effect properties.
 - Add dark-mode. 
-- In the general element settings page the texture is rendered, if there's any. This texture is sometimes difficulty to see if it's white because the background is also white. 
+- The general element settings tries to render its textures if they are present in the specified location. These textures can sometimes be difficult to see if they are white because the background is also white.
 
 
 ## Known issues
