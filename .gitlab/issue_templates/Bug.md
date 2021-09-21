@@ -4,7 +4,7 @@
 
 ## How to reproduce
 
-(What can someone reproduce the bug?)
+(How can someone reproduce the bug?)
 
 ## Expected behavior
 
