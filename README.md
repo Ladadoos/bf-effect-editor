@@ -98,4 +98,8 @@ The following is a list of improvements or new features that could be worked on.
 
 
 ## License
-This project is open source and available under GNU General Public License v3.0. See [LICENSE](./LICENSE) for more information. 
+This project is open source and available under GNU General Public License v3.0. See [LICENSE](./LICENSE) for more information.
+
+
+## Disclosure
+EA has not endorsed and does not support this product.
