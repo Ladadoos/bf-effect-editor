@@ -13,6 +13,8 @@
         xmlns:dockctrl="clr-namespace:Xceed.Wpf.AvalonDock.Controls;assembly=Xceed.Wpf.AvalonDock"
         mc:Ignorable="d"
         Title="Skylords Reborn Effect Editor" Height="880" Width="1720" WindowStyle="None" ResizeMode="CanResize" SnapsToDevicePixels="True" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+
+
     <Window.Resources>
         <vm:MainWindowViewModel x:Key="MainWindowViewModel"/>
     </Window.Resources>
