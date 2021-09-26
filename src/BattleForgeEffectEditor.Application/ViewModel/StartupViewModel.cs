@@ -3,8 +3,10 @@
 // Project licensed under GNU General Public License v3.0. See LICENSE for more information.
 
 using BattleForgeEffectEditor.Application.Commands;
+using BattleForgeEffectEditor.Application.Resources.Themes;
 using BattleForgeEffectEditor.Application.Settings;
 using BattleForgeEffectEditor.Application.ViewModel.GenericControls;
+using BattleForgeEffectEditor.Models.Enums;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -13,6 +15,8 @@ namespace BattleForgeEffectEditor.Application.ViewModel
     public class StartupRecentFileViewModel : ObservableObject
     {
         public ICommand OpenSpecialEffectCommand => new RelayCommand(OpenSpecialEffect);
+
+        
 
         private string fullFilePath;
         public string FullFilePath => fullFilePath;
@@ -40,6 +44,10 @@ namespace BattleForgeEffectEditor.Application.ViewModel
             }
         }
 
+        public ICommand SwitchDarkMode => new RelayCommand((_) => SwitchDarkTheme());
+
+        public bool IsDarkMode { get; set; }
+
         public ObservableCollection<StartupRecentFileViewModel> RecentFiles { get; private set; } =
                 new ObservableCollection<StartupRecentFileViewModel>();
 
@@ -58,17 +66,42 @@ namespace BattleForgeEffectEditor.Application.ViewModel
             {
                 OnDirectorySet = (dir) => settingsService.SetBackupDirectory(dir),
                 OnDirectoryCleared = () => settingsService.SetBackupDirectory(string.Empty),
-                GetDirectory = () => settingsService.GetBackupDirectory()
+                GetDirectory = () => settingsService.GetBackupDirectory(),
+                DirectoryChooserType = DirectoryChooserTypes.BackupDirectory
             };
 
             ResourcesDirectoryChooser = new DirectoryChooserViewModel()
             {
                 OnDirectorySet = (dir) => settingsService.SetResourcesDirectory(dir),
                 OnDirectoryCleared = () => settingsService.SetResourcesDirectory(string.Empty),
-                GetDirectory = () => settingsService.GetResourcesDirectory()
+                GetDirectory = () => settingsService.GetResourcesDirectory(),
+                DirectoryChooserType = DirectoryChooserTypes.ResourcesDirectory
             };
 
             RefreshRecentFiles();
+
+            IsDarkMode = settingsService.GetAppDarkTheme();
+            SetTheme();
+        }
+
+        private void SwitchDarkTheme()
+        {
+            bool EnableDarkMode = !settingsService.GetAppDarkTheme();
+            settingsService.SetAppDarkTheme(EnableDarkMode);
+            IsDarkMode = EnableDarkMode;
+            SetTheme();
+        }
+
+        private void SetTheme()
+        {
+            if (IsDarkMode)
+            {
+                ThemeHandler.SetTheme(ThemeHandler.AppTheme.DarkTheme);
+            }
+            else
+            {
+                ThemeHandler.SetTheme(ThemeHandler.AppTheme.LightTheme);
+            }
         }
 
         public void RefreshRecentFiles()

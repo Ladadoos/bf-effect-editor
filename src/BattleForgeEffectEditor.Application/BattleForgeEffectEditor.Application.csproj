@@ -63,12 +63,15 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.5.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -103,12 +106,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Resources\Themes\ThemeHandler.cs" />
     <Compile Include="Settings\EditorSettings.cs" />
     <Compile Include="Settings\EditorStateSettings.cs" />
     <Compile Include="Settings\SettingsService.cs" />
     <Compile Include="Utility\BfTextureConverter.cs" />
     <Compile Include="Utility\DialogService.cs" />
     <Compile Include="Utility\ObjectExtensions.cs" />
+    <Compile Include="Utility\DirectoryChooserPathValidator.cs" />
     <Compile Include="Utility\TypeUtilities.cs" />
     <Compile Include="Utility\WindowsService.cs" />
     <Compile Include="ViewModel\DockManagerViewModel.cs" />
@@ -261,6 +266,14 @@
     <Compile Include="View\GenericControls\MultiStageButtonView.xaml.cs">
       <DependentUpon>MultiStageButtonView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Themes\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\LightTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DynamicTrackEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -454,6 +467,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Editor\favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

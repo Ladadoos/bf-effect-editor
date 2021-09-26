@@ -20,5 +20,7 @@ namespace BattleForgeEffectEditor.Application.Settings
         public string ResourcesDirectory { get; set; } = string.Empty;
 
         public bool FocusMapEditorOnSave { get; set; } = true;
+
+        public bool AppInDarkTheme { get; set; } = false;
     }
 }

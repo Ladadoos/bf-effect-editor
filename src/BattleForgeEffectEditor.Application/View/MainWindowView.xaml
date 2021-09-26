@@ -12,18 +12,43 @@
         xmlns:dock="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:dockctrl="clr-namespace:Xceed.Wpf.AvalonDock.Controls;assembly=Xceed.Wpf.AvalonDock"
         mc:Ignorable="d"
-        Title="Skylords Reborn Effect Editor" Height="1080" Width="1920">
+        Title="Skylords Reborn Effect Editor" Height="880" Width="1720" WindowStyle="None" ResizeMode="CanResize" SnapsToDevicePixels="True" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <vm:MainWindowViewModel x:Key="MainWindowViewModel"/>
-    </Window.Resources>    
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+        CaptionHeight="0"
+        ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
 
     <Grid DataContext="{StaticResource MainWindowViewModel}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="28"/>
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Menu>
+        <Border MouseDown="Border_MouseDown" BorderThickness="1">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="/BattleForgeEffectEditor.Application;component/Resources/Editor/favicon.ico" Height="25" Width="25"/>
+                <Label Content="Skylords Reborn Effect Editor" FontWeight="SemiBold" Grid.Column="1"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2">
+                    <Button Content="_" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" BorderThickness="0" Background="Transparent" Margin="0,0,0,3" Click="ButtonMinimize_Click"/>
+                    <Button Content="□" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" BorderThickness="0" Background="Transparent" Click="ButtonMaximize_Click"/>
+                    <Button Content="X" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" BorderThickness="0" Background="Transparent" Click="ButtonClose_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Menu Grid.Row="1">
             <MenuItem Header="General">
                 <MenuItem Header="Startup" Command="{Binding CreateStartupCommand}" />
                 <MenuItem Header="Exit" Command="{Binding ShutdownApplicationCommand}" />
@@ -35,10 +60,10 @@
             <MenuItem Header="Map editor" Command="{Binding OpenMapEditorCommand}"/>
         </Menu>
 
-        <dock:DockingManager Grid.Row="1"
+        <dock:DockingManager Grid.Row="2"
                              DataContext="{Binding DockManagerViewModel}"
                              DocumentsSource="{Binding Documents}"
-                             AnchorablesSource="{Binding Anchorables}" >
+                             AnchorablesSource="{Binding Anchorables}"  >
             <dock:DockingManager.Resources>
                 <DataTemplate DataType="{x:Type vm:SpecialEffectEditorViewModel}">
                     <v:SpecialEffectEditorView />
