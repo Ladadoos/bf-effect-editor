@@ -7,7 +7,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BattleForgeEffectEditor.Application"
              xmlns:utility="clr-namespace:BattleForgeEffectEditor.Application.Utility"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" x:Class="BattleForgeEffectEditor.Application.App"
              StartupUri="View/MainWindowView.xaml">
     <Application.Resources>
         <ResourceDictionary>
