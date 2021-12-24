@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// BattleForge Special Effect Editor
+// Copyright(C) 2021 Skylords Reborn
+// Project licensed under GNU General Public License v3.0. See LICENSE for more information.
+
+using System;
 using System.Windows;
 
 namespace BattleForgeEffectEditor.Application.Resources.Themes
 {
-    class ThemeHandler
+    public enum AppTheme
     {
-        public enum AppTheme
-        {
-            LightTheme,
-            DarkTheme
-        }
+        LightTheme,
+        DarkTheme
+    }
 
+    internal class ThemeHandler
+    {
         public static AppTheme CurrentTheme { get; set; }
 
         private static ResourceDictionary ThemeDictionary
@@ -28,19 +28,12 @@ namespace BattleForgeEffectEditor.Application.Resources.Themes
             ThemeDictionary = new ResourceDictionary() { Source = uri };
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="theme">Theme Enum</param>
-        /// <param name="CustomTheme">Load custom theme</param>
-        /// <param name="ThemeName">Name of theme</param>
-        /// <param name="ThemePath">PathDirectory from settings</param>
         public static void SetTheme(AppTheme theme, bool CustomTheme = false, string ThemeName = "", string ThemePath = "")
         {
             string themeName = null;
             CurrentTheme = theme;
 
-            if(!CustomTheme)
+            if (!CustomTheme)
             {
                 switch (theme)
                 {
@@ -51,10 +44,12 @@ namespace BattleForgeEffectEditor.Application.Resources.Themes
                 {
                     if (!string.IsNullOrEmpty(themeName))
                         ChangeTheme(new Uri($"Resources/Themes/{themeName}.xaml", UriKind.Relative));
+                } catch (Exception e)
+                {
+                    Console.WriteLine($"Exception setting theme. Theme {theme}, CustomTheme {CustomTheme}, " +
+                        $"ThemeName {ThemeName}, ThemePath {ThemePath}. Exception: {e}");
                 }
-                catch { }
-            }
-            else
+            } else
             {
                 if (string.IsNullOrEmpty(ThemePath))
                     ThemePath = AppDomain.CurrentDomain.BaseDirectory + @"\Themes";

@@ -25,7 +25,7 @@ namespace BattleForgeEffectEditor.Application.Utility
             if (value != null)
             {
                 string textureName = Convert.ToString(value).Trim();
-                if (textureName != string.Empty)
+                if (!string.IsNullOrEmpty(textureName))
                 {
                     string path = settingsService.GetResourcesDirectory() + "/textures/" + textureName;
                     if (File.Exists(path))

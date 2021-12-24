@@ -4,7 +4,6 @@
 
 using System.Windows;
 using System.Windows.Input;
-using System;
 
 namespace BattleForgeEffectEditor.Application
 {
@@ -18,36 +17,34 @@ namespace BattleForgeEffectEditor.Application
             InitializeComponent();
         }
 
+        // This is required, because else the window becomes bigger than the screen
+        // when maximizing the window.
+        public void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            BorderThickness = WindowState == WindowState.Maximized ? new Thickness(8) : new Thickness(0);
+        }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
+            if (e.ClickCount == 2) // Double click
+                WindowState = WindowState != WindowState.Maximized ? WindowState.Maximized : WindowState.Normal;
+            else if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
-            }
         }
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.MainWindow.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
 
         private void ButtonMaximize_Click(object sender, RoutedEventArgs e)
         {
-            if (System.Windows.Application.Current.MainWindow.WindowState != WindowState.Maximized)
-            {
-                System.Windows.Application.Current.MainWindow.WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                System.Windows.Application.Current.MainWindow.WindowState = WindowState.Normal;
-            }
+            WindowState = WindowState != WindowState.Maximized ? WindowState.Maximized : WindowState.Normal;
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
-
         }
     }
 }

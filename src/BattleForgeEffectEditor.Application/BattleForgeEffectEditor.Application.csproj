@@ -112,8 +112,9 @@
     <Compile Include="Settings\SettingsService.cs" />
     <Compile Include="Utility\BfTextureConverter.cs" />
     <Compile Include="Utility\DialogService.cs" />
+    <Compile Include="Utility\DirectoryChooser\PathValidationError.cs" />
     <Compile Include="Utility\ObjectExtensions.cs" />
-    <Compile Include="Utility\DirectoryChooserPathValidator.cs" />
+    <Compile Include="Utility\DirectoryChooser\PathValidator.cs" />
     <Compile Include="Utility\TypeUtilities.cs" />
     <Compile Include="Utility\WindowsService.cs" />
     <Compile Include="ViewModel\DockManagerViewModel.cs" />

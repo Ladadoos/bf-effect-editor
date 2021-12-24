@@ -87,7 +87,9 @@
                     </Border>
                     <Border Grid.Row="3">
                         <StackPanel Orientation="Vertical">
-                            <CheckBox Content="Dark Mode" Command="{Binding SwitchDarkMode}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="{Binding IsDarkMode}"/>
+                            <CheckBox Content="Dark Mode (Experimental)" Command="{Binding ToggleDarkModeCommand}" 
+                                      CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" 
+                                      VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="{Binding IsDarkMode}"/>
                         </StackPanel>
                     </Border>
                 </Grid>

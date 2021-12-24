@@ -12,7 +12,9 @@
         xmlns:dock="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:dockctrl="clr-namespace:Xceed.Wpf.AvalonDock.Controls;assembly=Xceed.Wpf.AvalonDock"
         mc:Ignorable="d"
-        Title="Skylords Reborn Effect Editor" Height="880" Width="1720" WindowStyle="None" ResizeMode="CanResize" SnapsToDevicePixels="True" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+        Title="Skylords Reborn Effect Editor" Height="880" Width="1720" WindowStyle="None" 
+        ResizeMode="CanResize" SnapsToDevicePixels="True" AllowsTransparency="True" 
+        WindowStartupLocation="CenterScreen" SizeChanged="Window_SizeChanged">
 
 
     <Window.Resources>
@@ -43,9 +45,12 @@
                 <Label Content="Skylords Reborn Effect Editor" FontWeight="SemiBold" Grid.Column="1"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2">
-                    <Button Content="_" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" BorderThickness="0" Background="Transparent" Margin="0,0,0,3" Click="ButtonMinimize_Click"/>
-                    <Button Content="□" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" BorderThickness="0" Background="Transparent" Click="ButtonMaximize_Click"/>
-                    <Button Content="X" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" BorderThickness="0" Background="Transparent" Click="ButtonClose_Click"/>
+                    <Button Content="_" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" 
+                            BorderThickness="0" Background="Transparent" Margin="0,0,0,3" Click="ButtonMinimize_Click"/>
+                    <Button Content="□" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" 
+                            BorderThickness="0" Background="Transparent" Click="ButtonMaximize_Click"/>
+                    <Button Content="X" Width="25" Height="25" Foreground="Gray" FontWeight="SemiBold" 
+                            BorderThickness="0" Background="Transparent" Click="ButtonClose_Click"/>
                 </StackPanel>
             </Grid>
         </Border>

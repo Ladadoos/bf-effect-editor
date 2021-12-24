@@ -62,8 +62,6 @@
     <Compile Include="Elements\StaticDecal.cs" />
     <Compile Include="Elements\Trail.cs" />
     <Compile Include="Elements\WaterDecal.cs" />
-    <Compile Include="Enums\DirectoryChooserTypes.cs" />
-    <Compile Include="Enums\DirectoryChooserPathValidatorErrorTypes.cs" />
     <Compile Include="Enums\TrackTypeEnums.cs" />
     <Compile Include="NodeLink.cs" />
     <Compile Include="DataAccess\SpecialEffectImportService.cs" />

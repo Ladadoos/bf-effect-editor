@@ -50,10 +50,10 @@ namespace BattleForgeEffectEditor.Application.ViewModel
         private void OpenMapEditor()
         {
             string mapEditorPath = settingsService.GetMapEditorDirectory();
-            if (mapEditorPath == string.Empty || !File.Exists(mapEditorPath))
+            if (string.IsNullOrEmpty(mapEditorPath) || !File.Exists(mapEditorPath))
             {
                 string fullPath = dialogService.OpenFileDialog("Select map editor", "Exe|*.exe");
-                if (fullPath == string.Empty)
+                if (string.IsNullOrEmpty(fullPath))
                     return;
 
                 mapEditorPath = fullPath;
@@ -72,7 +72,7 @@ namespace BattleForgeEffectEditor.Application.ViewModel
         private void OpenSpecialEffect()
         {
             string fullPath = dialogService.OpenFileDialog("Open special effect file", "Fxb|*.fxb");
-            if (fullPath == string.Empty)
+            if (string.IsNullOrEmpty(fullPath))
                 return;
 
             LoadSpecialEffect(fullPath);
@@ -110,7 +110,7 @@ namespace BattleForgeEffectEditor.Application.ViewModel
         private void TryCreateBackupOf(string fullFilePath)
         {
             string backupDir = settingsService.GetBackupDirectory();
-            if (backupDir == string.Empty)
+            if (string.IsNullOrEmpty(backupDir))
                 return;
 
             string fileName = Path.GetFileNameWithoutExtension(fullFilePath) + "-backup-" +
