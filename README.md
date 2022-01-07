@@ -85,7 +85,6 @@ The following is a list of improvements or new features that could be worked on.
 - Restrict combinations of elements and/or tracks that create an invalid special effect.  
 - Export file to and import from `.xml`. BattleForge can read special effects in the form of `.xml` files too. Having the special effect files in text format also allows to easily version control the special effects.
 - Support undo and redo for all editable special effect properties.
-- Add dark-mode. 
 - The general element settings tries to render its textures if they are present in the specified location. These textures can sometimes be difficult to see if they are white because the background is also white.
 
 
@@ -95,6 +94,7 @@ The following is a list of improvements or new features that could be worked on.
 
 ## Contributions
 - Created originally by [@Ladadoos](https://forum.skylords.eu/index.php?/profile/2557-ladadoos/)
+- (Experimental) dark-mode added by [@LamonChan](https://forum.skylords.eu/index.php?/profile/43581-lamonchan/)
 
 
 ## License
