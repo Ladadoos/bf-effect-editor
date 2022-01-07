@@ -3,7 +3,9 @@
 // Project licensed under GNU General Public License v3.0. See LICENSE for more information.
 
 using BattleForgeEffectEditor.Application.Commands;
+using BattleForgeEffectEditor.Application.Resources.Themes;
 using BattleForgeEffectEditor.Application.Settings;
+using BattleForgeEffectEditor.Application.Utility;
 using BattleForgeEffectEditor.Application.ViewModel.GenericControls;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -40,6 +42,10 @@ namespace BattleForgeEffectEditor.Application.ViewModel
             }
         }
 
+        public ICommand ToggleDarkModeCommand => new RelayCommand((_) => ToggleDarkMode());
+
+        public bool IsDarkMode { get; set; }
+
         public ObservableCollection<StartupRecentFileViewModel> RecentFiles { get; private set; } =
                 new ObservableCollection<StartupRecentFileViewModel>();
 
@@ -69,6 +75,26 @@ namespace BattleForgeEffectEditor.Application.ViewModel
             };
 
             RefreshRecentFiles();
+
+            IsDarkMode = settingsService.GetAppInDarkTheme();
+            SetTheme();
+        }
+
+        private void ToggleDarkMode()
+        {
+            bool enableDarkMode = !settingsService.GetAppInDarkTheme();
+            settingsService.SetAppDarkTheme(enableDarkMode);
+            IsDarkMode = enableDarkMode;
+            SetTheme();
+        }
+
+        private void SetTheme()
+        {
+            AppTheme theme = AppTheme.LightTheme;
+            if (IsDarkMode)
+                theme = AppTheme.DarkTheme;
+
+            ThemeHandler.SetTheme(theme);
         }
 
         public void RefreshRecentFiles()

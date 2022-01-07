@@ -1,11 +1,11 @@
-﻿using JsonSettings;
-// BattleForge Special Effect Editor
+﻿// BattleForge Special Effect Editor
 // Copyright(C) 2021 Skylords Reborn
 // Project licensed under GNU General Public License v3.0. See LICENSE for more information.
 
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JsonSettings;
 
 namespace BattleForgeEffectEditor.Application.Settings
 {
@@ -24,6 +24,15 @@ namespace BattleForgeEffectEditor.Application.Settings
             editorSettings.Save();
         }
 
+        public bool GetAppInDarkTheme() => EditorSettings.AppInDarkTheme;
+
+        public void SetAppDarkTheme(bool enable)
+        {
+            EditorSettings editorSettings = EditorSettings;
+            editorSettings.AppInDarkTheme = enable;
+            editorSettings.Save();
+        }
+
         public string GetBackupDirectory() => EditorSettings.BackupDirectory;
 
         public void SetBackupDirectory(string fullDirPath)
@@ -36,7 +45,7 @@ namespace BattleForgeEffectEditor.Application.Settings
         public void CleanBackupDirectory()
         {
             string backupDir = GetBackupDirectory();
-            if (backupDir == string.Empty || !Directory.Exists(backupDir))
+            if (string.IsNullOrEmpty(backupDir) || !Directory.Exists(backupDir))
                 return;
 
             DirectoryInfo info = new DirectoryInfo(backupDir);

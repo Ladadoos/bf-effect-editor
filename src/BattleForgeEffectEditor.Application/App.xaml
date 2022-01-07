@@ -10,6 +10,9 @@
              StartupUri="View/MainWindowView.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/Themes/LightTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
             <utility:BfTextureConverter x:Key="BfTextureConverter" />
             <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
         </ResourceDictionary>

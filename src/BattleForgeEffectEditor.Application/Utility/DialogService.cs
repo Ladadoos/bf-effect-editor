@@ -51,12 +51,12 @@ namespace BattleForgeEffectEditor.Application.Utility
 
         public void ShowError(string text, string caption)
         {
-            _ = MessageBox.Show(caption, text, MessageBoxButton.OK, MessageBoxImage.Error);
+            _ = MessageBox.Show(text, caption, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public void ShowOK(string text, string caption)
         {
-            _ = MessageBox.Show(caption, text, MessageBoxButton.OK, MessageBoxImage.Information);
+            _ = MessageBox.Show(text, caption, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public bool ShowAreYouSure(string text, string caption)

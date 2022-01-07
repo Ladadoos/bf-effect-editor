@@ -29,8 +29,7 @@
                                          Margin="5, 5, 5, 0"
                                          DataContext="{Binding TopBar}"/>
         
-        <Border Grid.Row="1" Grid.RowSpan="2" Margin="5" CornerRadius="6" BorderBrush="Gray"
-                    Background="WhiteSmoke" BorderThickness="2">
+        <Border Grid.Row="1" Grid.RowSpan="2" Margin="5" CornerRadius="6" BorderThickness="2">
             <v:ElementTreeView Margin="5" DataContext="{Binding ElementTree}" />
         </Border>
 

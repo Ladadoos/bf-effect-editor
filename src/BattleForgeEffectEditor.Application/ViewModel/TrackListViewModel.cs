@@ -49,7 +49,7 @@ namespace BattleForgeEffectEditor.Application.ViewModel
             {
                 // TODO Not all elements support all tracks.
                 var enums = Enum.GetValues(typeof(TrackType)).OfType<TrackType>();
-                if (searchFieldText == string.Empty)
+                if (string.IsNullOrEmpty(searchFieldText))
                     return enums;
                 return enums.Where(t => t.ToString().ToLower().Contains(searchFieldText.ToLower()));
             }

@@ -12,23 +12,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Orientation="Horizontal">
-        <Button Width="50" Command="{Binding OpenOrSetDirectoryCommand}" Margin="0, 0, 5, 0">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Style.Triggers>
-                    <DataTrigger Binding="{Binding HasDirectorySet}" Value="False">
-                            <Setter Property="Content" Value="Set"/>
-                        </DataTrigger>
-                    <DataTrigger Binding="{Binding HasDirectorySet}" Value="True">
-                            <Setter Property="Content" Value="Open"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+        <Button Width="50" Command="{Binding OpenOrSetDirectoryCommand}" Grid.Column="0" Margin="0, 0, 5, 0" 
+                Content="{Binding SetOpenButtonText}"/>
         <Button Width="50" Content="Reset" Command="{Binding ClearDirectoryCommand}" 
                                 Visibility="{Binding HasDirectorySet, Converter={StaticResource BoolToVisibility}}"/>
         <Label Content="Directory: "/>
-        <Label Content="{Binding Directory}" />
+        <TextBlock Text="{Binding Directory}" TextAlignment="Left" VerticalAlignment="Center"/>
     </StackPanel>
 </UserControl>
