@@ -86,16 +86,21 @@ The following is a list of improvements or new features that could be worked on.
 - Export file to and import from `.xml`. BattleForge can read special effects in the form of `.xml` files too. Having the special effect files in text format also allows to easily version control the special effects.
 - Support undo and redo for all editable special effect properties.
 - The general element settings tries to render its textures if they are present in the specified location. These textures can sometimes be difficult to see if they are white because the background is also white.
+- See the [GitLab issues](https://gitlab.com/skylords-reborn/battleforge-special-effect-editor/-/issues) for more improvement/feature suggestions.
 
 
 ## Known issues
 - There are 4 tornado special effect files that this editor cannot parse. That is because their datastructure is slightly different and it did not seem worth the time considering the editor can parse all other special effect files (around 2450 of them).
+- See the [GitLab issues](https://gitlab.com/skylords-reborn/battleforge-special-effect-editor/-/issues) for more known issues.
 
 
 ## Contributions
 - Created originally by [@Ladadoos](https://forum.skylords.eu/index.php?/profile/2557-ladadoos/)
 - (Experimental) dark-mode added by [@LamonChan](https://forum.skylords.eu/index.php?/profile/43581-lamonchan/)
 
+## Tips using Effect Editor
+- You can splitscreen the application with two (or more) effects by dragging the tabs at the top. Consequently, this allows you to drag and drop components from one effect to the other. Extremely useful to build new effects using building blocks from previous existing effects.
+![Tip Drag and Drop Between Effects](./images/tip_drag_drop_between_effects.png)
 
 ## License
 This project is open source and available under GNU General Public License v3.0. See [LICENSE](./LICENSE) for more information.
